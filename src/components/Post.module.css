@@ -1,0 +1,35 @@
+
+.container {
+    background-color: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.name {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: #333;
+    font-family: sans-serif;
+    border-bottom: 2px solid #007bff;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.free_text {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    word-wrap: break-word; /* מבטיח שטקסט ארוך לא יחרוג מהמסגרת */
+}
