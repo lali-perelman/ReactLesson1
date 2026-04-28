@@ -1,0 +1,86 @@
+NewPost.module.css
+
+.modal {
+    background-color: white;
+    padding: 40px; /* יותר רווח פנימי */
+    border-radius: 15px; /* פינות מעוגלות יותר */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* צל רך ועמוק יותר */
+    max-width: 500px;
+    width: 90%;
+    margin: 50px auto;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center; /* כדי שהכותרת תהיה במרכז */
+}
+
+.title {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.formGroup {
+    margin-bottom: 25px;
+    text-align: left; /* שהתווית והטקסט יהיו מיושרים לשמאל */
+}
+
+.formGroup label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.9rem;
+    text-align: center; /* בתמונה נראה שהתוויות ממורכזות או קרובות למרכז */
+}
+
+.input, .textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cce0ff; /* צבע גבול כחלחל עדין */
+    border-radius: 10px;
+    background-color: #f9fbff;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.input:focus, .textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.submitButton {
+    flex: 1; /* שהכפתורים יתחלקו שווה בשווה ברוחב */
+    background-color: #3b71ca; /* הכחול של המורה */
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cancelButton {
+    flex: 1;
+    background-color: #d1d5db; /* אפור בהיר */
+    color: #4b5563;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background-color: #305da3;
+}
+
+.cancelButton:hover {
+    background-color: #c4c9d0;
+}

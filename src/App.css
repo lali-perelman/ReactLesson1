@@ -182,3 +182,30 @@
     border-right-color: var(--border);
   }
 }
+/* הרקע החשוך שמכסה את כל המסך */
+.modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* שחור עם 60% שקיפות */
+    z-index: 10; /* מוודא שזה מעל הפוסטים */
+}
+
+/* עיצוב המודאל עצמו שיופיע מעל הרקע */
+/* אם את משתמשת ב-CSS Modules עבור NewPost, שימי את זה שם תחת .modal */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* ממקם בדיוק באמצע המסך */
+    background-color: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 20; /* חייב להיות גבוה יותר מה-Backdrop */
+    width: 90%;
+    max-width: 500px;
+    font-family: sans-serif;
+}
