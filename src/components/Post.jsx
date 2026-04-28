@@ -1,25 +1,28 @@
 import style from './Post.module.css'
 import { useState } from 'react'
 
-function Post({ name, content , onEdit}) {
+function Post({ name, content, onEdit, onDelete }) {
 
     const [editContent, setEditContent] = useState(content)
-    const [isEditing,SetIsEditing]=useState(false)
+    const [isEditing, SetIsEditing] = useState(false)
 
 
     const hendleInputChange = (event) => {
         setEditContent(event.target.value)
     }
-    const hendlEditClick=()=>{
+    const hendlEditClick = () => {
         SetIsEditing(true)
     }
-    const hendlSaveClick=()=>{
-       onEdit(editContent)
+    const hendlSaveClick = () => {
+        onEdit(editContent)
         SetIsEditing(false)
     }
-    const hendelCancelClick=()=>{
+    const hendelCancelClick = () => {
         setEditContent(content)
         SetIsEditing(false)
+    }
+    const hendlDeleteClick = () => {
+        onDelete()
     }
 
     return (
@@ -27,9 +30,11 @@ function Post({ name, content , onEdit}) {
             <h1 className={style.name}>{name}</h1>
             <p className={style.content}>{content}</p>
 
-            { !isEditing &&<button className={style.button} onClick={hendlEditClick}>Edit</button>}
+            {!isEditing && <><button className={style.button} onClick={hendlEditClick}>Edit</button>
+                <button className={style.button} onClick={hendlDeleteClick}>Delete</button>
+            </>}
 
-            {isEditing &&<div className={style.editSection}>
+            {isEditing && <div className={style.editSection}>
                 <input
                     className={style.input} placeholder="Edit post here..."
                     type="text"
@@ -42,6 +47,7 @@ function Post({ name, content , onEdit}) {
                     <button className={style.button + " " + style.buttonCancel} onClick={hendelCancelClick}>
                         Cancel
                     </button>
+
                 </div>
             </div>}
         </div>
