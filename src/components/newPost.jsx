@@ -1,6 +1,12 @@
 import styles from "./NewPost.module.css";
 import { useState } from "react";
-function NewPost({ close , onAdd}) {
+import { useNavigate ,useOutletContext} from "react-router";
+
+function NewPost() {
+
+let navigate = useNavigate();  
+const { onAdd } = useOutletContext();
+
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
     const hendleAuthorChange = (event) => {
@@ -14,7 +20,7 @@ function NewPost({ close , onAdd}) {
         onAdd(author, content);
         setAuthor("");
         setContent("");
-        close();
+        navigate("/posts");
     }
   return (
     <form className={styles.modal} onSubmit={handleSubmit}>
@@ -46,7 +52,7 @@ function NewPost({ close , onAdd}) {
       </div>
 
       <div className={styles.buttonGroup}>
-        <button type="button" className={styles.cancelButton} onClick={close}>
+        <button type="button" className={styles.cancelButton} onClick={()=> navigate("/posts")} >
           Cancel
         </button>
         <button type="submit" className={styles.submitButton}>

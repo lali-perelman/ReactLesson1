@@ -1,10 +1,23 @@
 import style from './Post.module.css'
 import { useState } from 'react'
+import { NavLink, useOutletContext, useParams } from 'react-router';
+function Post() {
 
-function Post({ name, content, onEdit, onDelete }) {
-
-    const [editContent, setEditContent] = useState(content)
+     
+    const [editContent, setEditContent] = useState('')
     const [isEditing, SetIsEditing] = useState(false)
+
+    const { postId } = useParams();
+    const { posts, onEdit } = useOutletContext();
+
+    const post = posts[Number(postId)]
+    if (!post) {
+        return <div className={style.container}>
+            <h1 className={style.title}>Post Not Found</h1>
+        </div>
+    }
+
+    const { title, body } = post;
 
 
     const hendleInputChange = (event) => {
@@ -12,45 +25,48 @@ function Post({ name, content, onEdit, onDelete }) {
     }
     const hendlEditClick = () => {
         SetIsEditing(true)
+        setEditContent(body)
     }
     const hendlSaveClick = () => {
-        onEdit(editContent)
+        onEdit(Number(postId), editContent)
         SetIsEditing(false)
     }
     const hendelCancelClick = () => {
-        setEditContent(content)
+        setEditContent(body)
         SetIsEditing(false)
     }
-    const hendlDeleteClick = () => {
-        onDelete()
-    }
+
 
     return (
-        <div className={style.container} >
-            <h1 className={style.name}>{name}</h1>
-            <p className={style.content}>{content}</p>
+        <>
+            <div className={style.container} >
+                <h1 className={style.title}>{title}</h1>
+                <p className={style.body}>{body}</p>
 
-            {!isEditing && <><button className={style.button} onClick={hendlEditClick}>Edit</button>
-                <button className={style.button} onClick={hendlDeleteClick}>Delete</button>
-            </>}
+                {!isEditing && <><button className={style.button} onClick={hendlEditClick}>Edit</button>
+                </>}
 
-            {isEditing && <div className={style.editSection}>
-                <input
-                    className={style.input} placeholder="Edit post here..."
-                    type="text"
-                    onChange={hendleInputChange}
-                />
-                <div className={style.buttonGroup}>
-                    <button className={style.button + " " + style.buttonSave} onClick={hendlSaveClick}>
-                        Save
-                    </button>
-                    <button className={style.button + " " + style.buttonCancel} onClick={hendelCancelClick}>
-                        Cancel
-                    </button>
+                {isEditing && <div className={style.editSection}>
+                    <input
+                        className={style.input} placeholder="Edit post here..."
+                        type="text"
+                        onChange={hendleInputChange}
+                    />
+                    <div className={style.buttonGroup}>
+                        <button className={style.button + " " + style.buttonSave} onClick={hendlSaveClick}>
+                            Save
+                        </button>
+                        <button className={style.button + " " + style.buttonCancel} onClick={hendelCancelClick}>
+                            Cancel
+                        </button>
 
-                </div>
-            </div>}
-        </div>
+                    </div>
+                </div>}
+            </div>
+            <NavLink to="/posts" className={style.backLink}>
+                Back to Posts
+            </NavLink>
+        </>
     )
 }
 export default Post;
